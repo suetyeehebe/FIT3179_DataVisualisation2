@@ -1,0 +1,122 @@
+body *{
+    font-family: 'Roboto';
+}
+
+body {
+    background-color: #f9fafb;
+}
+
+h1{
+    font-family: 'EB Garamond';
+}
+
+h2{
+    font-family: 'EB Garamond';
+}
+
+p{
+    font-family: 'Roboto';
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.page {
+    margin: auto;
+    padding: 50px;
+    padding-top: 35px;
+}
+
+.vis-container {
+    width: 100%;
+}
+
+.pure-g {
+    margin-bottom: 40px;
+}
+
+.small-font {
+    font-size: 14px;
+}
+
+.pad-right{
+    padding-right: 20px;
+}
+
+.pad-left{
+    padding-left: 20px;
+}
+
+.cereb_text{
+    color: #66c2a5;
+}
+
+.diabetes_text{
+    color: #fc8d62;
+}
+
+.heart_text{
+    color: #8da0cb;
+}
+
+.resp_text{
+    color: #e78ac3;
+}
+
+.neph_text{
+    color: #a6d854;
+}
+
+.accident_text{
+    color: #ffd92f;
+}
+
+/* KPI tiles */
+.kpis {margin-top: 10px; margin-bottom: 24px;}
+.kpis .pure-u-1-3 {padding-left:0; padding-right:0;}
+.kpi-tile{
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04);
+}
+.kpi-label{
+  font-size: 25px;
+  color: #6b7280;
+  letter-spacing: .02em;
+  margin-bottom: 6px;
+}
+.kpi-value{
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #111827;
+}
+.kpi-footnote{
+  margin-top: 6px;
+  font-size: 12px;
+  color: #7e838d;
+}
+
+.demographics .pure-u-1-1 { margin-bottom: 20px;}
+/* Text Alignment in HTML */
+
+#l-align {
+    text-align: left;
+}
+
+#c-align {
+    text-align: center;
+}
+
+#r-align {
+    text-align: right;
+}
+
+/* add space when one .vis-container follows another */
+.vis-container + .vis-container {
+  margin-top: 24px;   /* tweak to your liking */
+}
