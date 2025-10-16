@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 400,
+  "title": "Top 5 Causes of Death by Age Group (2020)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_Week10_Homework/refs/heads/main/data/cleaned_leading_causes.csv"
+  },
+  "transform": [{ "filter": "datum.Year == 2020" }],
+  "encoding": {
+    "x": {
+      "field": "Age Group",
+      "type": "ordinal",
+      "sort": ["0", "1-4", "5-14", "15-24", "25-34", "35-54", "55-74", "75+"],
+      "axis": { "labelAngle": 0 }
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "Percentage of cause-specific deaths out of total deaths",
+      "type": "quantitative",
+      "title": "Percentage of cause-specific deaths (%)"
+    }
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "causes_highlight",
+          "select": { "type": "point", "fields": ["Indicator Name"] },
+          "bind": "legend"
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "color": {
+          "field": "Indicator Name",
+          "type": "nominal",
+          "scale": {"scheme": "tableau20"},
+          "title": "Causes",
+          "legend": { "labelLimit": 0 }
+        },
+        "opacity": {
+          "condition": { "param": "causes_highlight", "value": 0.8 },
+          "value": 0.2
+        },
+        "tooltip": [
+          { "field": "Age Group" },
+          { "field": "Indicator Name", "title": "Cause" },
+          { "aggregate": "sum", "field": "Percentage of cause-specific deaths out of total deaths", "title": "Percentage of cause-specific deaths","format": ".2f" }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": -14,
+        "dy": -5,
+        "fontSize":12
+      },
+      "encoding": {
+        "text": {
+          "aggregate": "sum",
+          "field": "Percentage of cause-specific deaths out of total deaths",
+          "type": "quantitative",
+          "format": ".2f"
+        }
+      }
+    }
+  ]
+}
