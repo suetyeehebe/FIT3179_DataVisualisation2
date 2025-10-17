@@ -33,41 +33,122 @@
       "calculate": "toNumber(datum.year) == 2022 ? datum.staff_per_10k : null",
       "as": "staff_per_10k_2022"
     },
-    {"filter": "isValid(datum.median_income_2022) && isValid(datum.staff_per_10k_2022) && isValid(datum.rate)"}
+    {
+      "lookup": "state",
+      "from": {
+        "data": {
+          "values": [
+            {"state": "Kelantan",       "region": "East Coast (Peninsular Malaysia)"},
+            {"state": "Terengganu",     "region": "East Coast (Peninsular Malaysia)"},
+            {"state": "Pahang",         "region": "East Coast (Peninsular Malaysia)"},
+
+            {"state": "Perlis",         "region": "Northern Region (West Coast, Peninsular Malaysia)"},
+            {"state": "Kedah",          "region": "Northern Region (West Coast, Peninsular Malaysia)"},
+            {"state": "Pulau Pinang",   "region": "Northern Region (West Coast, Peninsular Malaysia)"},
+            {"state": "Perak",          "region": "Northern Region (West Coast, Peninsular Malaysia)"},
+
+            {"state": "Selangor",       "region": "Central Region (West Coast, Peninsular Malaysia)"},
+            {"state": "Kuala Lumpur",   "region": "Central Region (West Coast, Peninsular Malaysia)"},
+            {"state": "Putrajaya",      "region": "Central Region (West Coast, Peninsular Malaysia)"},
+
+            {"state": "Negeri Sembilan","region": "Southern Region (West Coast, Peninsular Malaysia)"},
+            {"state": "Melaka",         "region": "Southern Region (West Coast, Peninsular Malaysia)"},
+            {"state": "Johor",          "region": "Southern Region (West Coast, Peninsular Malaysia)"},
+
+        
+            {"state": "Sabah",          "region": "East Malaysia"},
+            {"state": "Sarawak",        "region": "East Malaysia"},
+            {"state": "Labuan",         "region": "East Malaysia"}
+          ]
+        },
+        "key": "state",
+        "fields": ["region"]
+      }
+    }
   ],
-  "mark": "point",
-  "encoding": {
-    "x": {
-      "field": "median_income_2022",
-      "type": "quantitative",
-      "scale": {
-        "domain": [ 0, 12000 ]
-      },
-      "title":"Median household income (RM)",
-      "axis": { "tickCount": 6 }
-    },
-    "y": {
-      "field": "rate",
-      "type": "quantitative",
-      "scale": {
-        "domain": [ 0,10 ]
-      },
-      "title": "Death rate (per 1,000 population)",
-      "axis": { "tickCount": 6 }
-    },
-    "size": {"field": "staff_per_10k", "type": "quantitative",  "scale": {"type": "threshold",
-      "domain": [35,55,75,95],
-      "range": [80, 220, 500, 900, 1600]},
-      "title": "Healthcare staff per 10,000 population",
-      "legend": { "titleLimit": 0 }
-    },
 
-    "tooltip": [
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "rate", "type": "quantitative", "title": "Death rate", "format": ".1f"},
-          {"field": "median_income_2022", "type": "quantitative", "title": "Income (RM)", "format": ",.0f"},
-          {"field": "staff_per_10k_2022", "type": "quantitative", "title": "Healthcare staff per 10,000 population", "format": ".1f"}
-    ]
+  "layer":[
+    {
+      "mark": {
+      "type": "circle",
+      "opacity": 0.8,
+      "stroke": "darkgray",
+      "strokeWidth": 1
+    },
+      "encoding": {
+        "x": {
+          "field": "median_income_2022",
+          "type": "quantitative",
+          "scale": {
+            "domain": [ 0, 12000 ]
+          },
+          "title":"Median household income (RM)",
+          "axis": { "tickCount": 6 }
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "domain": [ 0,10 ]
+          },
+          "title": "Death rate (per 1,000 population)",
+          "axis": { "tickCount": 6 }
+        },
+        "size": {"field": "staff_per_10k", "type": "quantitative",  "scale": {"type": "threshold",
+          "domain": [35,55,75,95],
+          "range": [80, 220, 500, 900, 1600]},
+          "title": "Healthcare staff per 10,000 population",
+          "legend": { "titleLimit": 0 }
+        },
 
-  }
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "title": "Region",
+          "scale": {
+            "domain": [
+              "East Coast (Peninsular Malaysia)",
+              "Central Region (West Coast, Peninsular Malaysia)",
+              "Northern Region (West Coast, Peninsular Malaysia)",
+              "Southern Region (West Coast, Peninsular Malaysia)",
+              "East Malaysia"
+            ],
+            "scheme":"accent"
+          },
+          "legend": {"orient": "right", "labelLimit": 0}
+        },
+
+        "tooltip": [
+              {"field": "state", "type": "nominal", "title": "State"},
+              {"field": "rate", "type": "quantitative", "title": "Death rate", "format": ".1f"},
+              {"field": "median_income_2022", "type": "quantitative", "title": "Income (RM)", "format": ",.0f"},
+              {"field": "staff_per_10k_2022", "type": "quantitative", "title": "Healthcare staff per 10,000 population", "format": ".1f"}
+        ]
+
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "fontWeight": "bolder",
+        "dx": -18
+      },
+      "encoding": {
+        "x": {"field": "median_income_2022", "type": "quantitative"},
+        "y": {"field": "rate", "type": "quantitative"},
+        "text": { "field": "state", "type": "nominal" },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['state'] == 'Kuala Lumpur' || datum['state'] == 'Selangor' || datum['state'] == 'Putrajaya' || datum['state'] == 'Kelantan' || datum['state'] == 'Kedah' || datum['state'] == 'Perlis' || datum['state'] == 'Perak'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    }
+  ]
+
 }
