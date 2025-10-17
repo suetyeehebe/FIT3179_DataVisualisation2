@@ -25,6 +25,7 @@ p{
 .page {
     margin: auto;
     padding: 50px;
+    max-width: 1250px;
     padding-top: 35px;
 }
 

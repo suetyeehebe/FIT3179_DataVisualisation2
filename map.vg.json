@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Crude Death Rate by State in Malaysia",
-  "width": 700,
-  "height": 300,
+  "width": "container",
+  "height": 400,
   "projection": {"type": "mercator"},
   "layer": [
     {"data": {
@@ -23,7 +23,7 @@
     },
     {"calculate": "datum.rate", "as": "Deaths per 1,000 population"}
   ],
-  "mark": {"type": "geoshape"},
+  "mark": {"type": "geoshape", "stroke":"white"},
   "encoding": {
     "color": {
       "field": "Deaths per 1,000 population",
