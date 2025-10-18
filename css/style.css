@@ -8,14 +8,17 @@ body {
 
 h1{
     font-family: 'EB Garamond';
+    font-size: 36px;
 }
 
 h2{
     font-family: 'EB Garamond';
+    font-size: 26px;
 }
 
 p{
     font-family: 'Roboto';
+    font-size: 18px;
 }
 
 .bold{

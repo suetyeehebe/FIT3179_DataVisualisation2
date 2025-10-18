@@ -63,26 +63,14 @@
                 </div>
             </div>
         </div>
+
+        <div class="pure-u-1-1">
+            <div id="visMap" class="vis-container"></div>
+        </div>
+
       </div>
     </div>
     <!-- end pure grid group -->
-
-    <div class = "pure-g">
-        <div class="pure-u-4-5">
-            <div id="visMap" class="vis-container"></div>
-        </div>
-        <div class="pure-u-1-5">
-            <aside class="callout">
-                <h3>Where the burden concentrates</h3>
-                <p>
-                    The map highlights wide differences in crude death rates across states in 2022.
-                    <span class="bold">Northern Peninsular</span> states and <span class="bold">parts of East Malaysia</span> 
-                    tended to record higher rates, while <span class="bold">Putrajaya</span> remained noticeably lower than surrounding states.
-                    East-west contrasts persist even after normalising by population.
-                </p>
-            </aside>
-        </div>
-    </div>
 
     <!-- pure grid group -->
     <div class="pure-g">
@@ -95,10 +83,32 @@
 
         <div class="pure-u-1-4">
             <p class="pad-left side-caption">
-                Most states cluster in a band where <span class="bold">higher incomes</span> 
-                are associated with <span class="bold">lower mortality</span>.
-                Larger bubbles at similar income levels often coincide with lower death rates, hinting that staffing capacity may
-                moderate risk even where incomes are comparable.
+                Most states form a gentle downward slope: <span class="bold">higher median income</span> tends to pair with <span class="bold">lower death rates</span>. 
+                Larger bubbles at similar income levels often coincide with lower death rates, suggesting that better healthcare staffing may help mitigate risk even where incomes are comparable.
+                Putrajaya stands out with high income and one of the lowest death rates, its large bubble reflecting dense healthcare capacity. 
+                Meanwhile, Kuala Lumpur and Selangor sit mid-low on mortality despite high income, reinforcing the idea that access to healthcare resources plays a critical role in reducing mortality beyond economic factors alone.
+
+            </p>
+        </div>
+
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-1">
+            <h2>How have death rate ranks changed?</h2> 
+        </div>
+
+        <div class="pure-u-3-4">
+            <div id="visBump" class="vis-container"></div>
+        </div>
+
+        <div class="pure-u-1-4">
+            <p class=" pad-left side-caption">
+                Perak stays near the top across the series, while Kedah rises into the top ranks in the early 2020s.
+                Kelantan drifts toward lower ranks around 2021-2022, and Johor settles near the bottom by 2023.
+                The crossing lines highlight that rank movements are not uniform-some states improve as others worsen.
             </p>
         </div>
 
@@ -111,16 +121,16 @@
             <h2>What are Malaysians dying from?</h2> 
         </div>
 
-        <div class="pure-u-2-5">
+        <div class="pure-u-1-4">
             <p class="pad-right">
                 From 2000 to 2020, Malaysia's causes of death shifted decisively toward chronic non-communicable diseases. 
                 <span class="bold heart_text">Ischaemic heart disease</span> and <span class="bold cereb_text">cerebrovascular disease</span> expanded sharply to dominate the mortality 
-                profile, while <span class="bold resp_text">lower respiratory infections</span> and <span class="bold accident_text">road traffic accidents</span> contributed smaller, steadier shares. Diabetes 
-                mellitus appeared briefly in the early 2000s before disappearing, suggesting limited or reclassified reporting.
+                profile, while <span class="bold resp_text">lower respiratory infections</span> and <span class="bold accident_text">road traffic accidents</span> contributed smaller, steadier shares. 
+                <span class="bold diabetes_text">Diabetes mellitus</span> appeared briefly in the early 2000s before disappearing, suggesting limited or reclassified reporting.
             </p>
         </div>
 
-        <div class="pure-u-3-5">
+        <div class="pure-u-3-4">
             <div id="visCausesOverTime" class="vis-container"></div>
         </div>
     </div>
@@ -132,11 +142,11 @@
             <h2>Demographics: Who is most affected?</h2> 
         </div>
 
-        <div class="pure-u-3-5"> 
+        <div class="pure-u-3-4"> 
             <div id="visDiverging" class="vis-container"></div>
         </div>
 
-        <div id = "l-align" class="pure-u-2-5">
+        <div id = "l-align" class="pure-u-1-4">
             <h3 class="pad-left">Gaps that matter</h3>
             <p class="pad-left">
                 Across every state, male death rates exceed female death rates, and the gap is substantial in several places.
@@ -149,14 +159,14 @@
     </div>
     
     <div class="pure-g demographics">
-        <div class="pure-u-4-5">
+        <div class="pure-u-3-4">
             <div id="visAgeCause" class="vis-container"></div>
         </div>
-        <div class="pure-u-1-5">
+        <div class="pure-u-1-4">
             <p class="pad-left">
                 Cause composition changes sharply with age. Early childhood is dominated by perinatal and congenital conditions,
                 adolescence and early adulthood show a prominent road-traffic component, and the picture transitions toward chronic
-                cardiopulmonary diseases from mid-life onward. By ages 55–74 and 75+, ischaemic heart diseases and lower respiratory infections account for the largest shares, with chronic obstructive pulmonary disease increasingly visible in the oldest group.
+                cardiopulmonary diseases from mid-life onward. By ages 55-74 and 75+, ischaemic heart diseases and lower respiratory infections account for the largest shares, with chronic obstructive pulmonary disease increasingly visible in the oldest group.
             </p>
         </div>
     </div>
@@ -166,7 +176,6 @@
       <div class="pure-u-1-1 small-font">
         <p>
             This visualisation is created by Lee Suet Yee.
-            
         </p>
       </div>
     </div>
@@ -180,6 +189,7 @@
     var specBubble = "./death_rate_bubble_chart.vg.json";
     var specDiverging = "./death_rate_by_sex_bar_chart.vg.json";
     var specCausesOverTime = "./leading_causes_stacked_area_chart.vg.json";
+    var specBump = "./death_rate_ranks_bump_chart.vg.json";
 
     vegaEmbed('#visMap', specMap, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
@@ -187,6 +197,13 @@
 
     vegaEmbed('#visAgeCause', specAgeCause, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        viewAgeCause = result.view;
+
+      // On first load, sync to the diverging chart's current YearSel if it's already available
+      if (viewDiverging) {
+        const currentYear = viewDiverging.signal('Year');
+        viewAgeCause.signal('Year', currentYear).run();
+      }
     }).catch(console.error);
 
     vegaEmbed('#visBubble', specBubble, { "actions": false }).then(function (result) {
@@ -195,9 +212,21 @@
 
     vegaEmbed('#visDiverging', specDiverging, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        viewDiverging = result.view;
+
+      // Whenever the slider changes in the diverging chart, push the value to the stacked bar
+        viewDiverging.addSignalListener('Year', function (name, value) {
+            if (viewAgeCause) {
+            viewAgeCause.signal('Year', value).run();
+            }
+        });
     }).catch(console.error);
 
     vegaEmbed('#visCausesOverTime', specCausesOverTime, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#visBump', specBump, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>
