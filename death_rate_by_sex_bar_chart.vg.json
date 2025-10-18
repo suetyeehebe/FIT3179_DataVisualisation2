@@ -7,50 +7,80 @@
   "params": [
   {
   "name": "Year",
-  "value": 2022,
-  "bind": {"input": "range", "min": 2010, "max": 2023, "step": 1}
+  "value": 2020,
+  "bind": {"input": "range", "min": 2010, "max": 2020, "step": 1}
   }
   ],
 
   "transform": [
     {"filter": "datum.year == Year"},
     {
-      "calculate": "datum.sex == 'female' ? -toNumber(datum.deaths_per_100k) : toNumber(datum.deaths_per_100k)",
+      "calculate": "datum.sex == 'male' ? 'Male' : 'Female'",
+      "as": "sex_std"
+    },
+    {
+      "calculate": "datum.sex_std == 'Female' ? -toNumber(datum.deaths_per_100k) : toNumber(datum.deaths_per_100k)",
       "as": "signed_deaths"
     }
   ],
-  "mark": "bar",
-  "encoding": {
-    "y": {
-      "field": "state",
-      "type": "nominal",
-      "title": "State",
-      "sort": "descending"
-    },
-    "x": {
-      "field": "signed_deaths",
-      "type": "quantitative",
-      "title": "Death rate (per 100,000 population)",
-      "scale": { "domain": [-1000, 1000] },
-      "axis": {
-        "labelExpr": "abs(datum.value)",
-        "grid": true
+  "layer":[
+    {
+      "mark": "bar",
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State",
+          "sort": "descending"
+        },
+        "x": {
+          "field": "signed_deaths",
+          "type": "quantitative",
+          "title": "Death rate (per 100,000 population)",
+          "scale": { "domain": [-1000, 1000] },
+          "axis": {
+            "labelExpr": "abs(datum.value)",
+            "grid": true
+          }
+        },
+        "color": {
+          "field": "sex_std",
+          "type": "nominal",
+          "scale": {"range": 
+          ["#FF9DA6", "#4C78A8"]},
+          "legend": {"orient": "top", "title": null}
+        },
+          "tooltip": [
+            {"field": "state", "type": "nominal", "title": "State"},
+            {"field": "sex_std", "type": "nominal", "title": "Sex"},
+            {"field": "deaths_per_100k", "type": "quantitative", "title": "Death rate (per 100,000 population)", "format": ".1f"},
+            { "field": "year", "type": "ordinal", "title": "Year" }
+          ]
       }
     },
-    "color": {
-      "field": "sex",
-      "type": "nominal",
-      "scale": {"range": 
-      ["#FF9DA6", "#4C78A8"]},
-      "legend": {"orient": "top", "title": null}
-    },
-      "tooltip": [
-        {"field": "state", "type": "nominal", "title": "State"},
-        {"field": "sex", "type": "nominal", "title": "Sex"},
-        {"field": "deaths_per_100k", "type": "quantitative", "title": "Death rate (per 100,000 population)", "format": ".1f"},
-        { "field": "year", "type": "ordinal", "title": "Year" }
-      ]
-  },
+    {
+      "mark":{
+        "type": "text",
+        "align": {"expr": "datum.signed_deaths < 0 ? 'right' : 'left'"},
+        "dx": {"expr": "datum.signed_deaths < 0 ? -2 : 2"}
+      },
+
+      "encoding": {
+        "x": {
+          "field": "signed_deaths",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State",
+          "sort": "descending"
+        },
+        "text":{"field": "deaths_per_100k", "type": "quantitative", "format": ".1f"}
+      }
+    }
+  ],
+  
   "config": {
     "view": {"stroke": null}
   }

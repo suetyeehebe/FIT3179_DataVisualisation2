@@ -4,9 +4,18 @@
   "height": 400,
   "title": "Top 5 Causes of Death by Age Group (2020)",
   "data": {
-    "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_Week10_Homework/refs/heads/main/data/cleaned_leading_causes.csv"
+    "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/leading_causes_by_age.csv"
   },
-  "transform": [{ "filter": "datum.Year == 2020" }],
+  "params": [
+  { "name": "Year", "value": 2020 }   
+  ],
+  "transform": [
+    { "filter": "datum.Year == Year" }, 
+    {
+      "calculate": "test(/jan$/i, datum['Age Group']) ? '1-4' : (test(/may$/i,datum['Age Group']) ? '5-14' : datum['Age Group'])",
+      "as": "Age Group"
+    }
+  ],
   "encoding": {
     "x": {
       "field": "Age Group",
