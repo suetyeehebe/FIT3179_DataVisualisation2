@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Crude Death Rate by State in Malaysia",
+  "title": "Crude Death Rate by State",
   "width": "container",
   "height": 400,
   "projection": {"type": "mercator"},
@@ -41,12 +41,35 @@
   }
   },
   {
-      "data": {
-      "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/ne_1.json",
-      "format": {"type": "topojson", "feature": "ne_110m_graticules_5"}
-      },
-      "mark": { "type": "geoshape", "fill": null, "stroke": "lightgray"}
+    "data": {
+    "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/ne_1.json",
+    "format": {"type": "topojson", "feature": "ne_110m_graticules_5"}
+    },
+    "mark": { "type": "geoshape", "fill": null, "stroke": "lightgray"}
+  },
+  {
+    "data": {
+    "values": [
+      {
+        "text": ["Wide differences in crude death rates across states in 2022.",
+"Higher rates in the Northern Peninsular states and parts of East Malaysia,",
+"while Putrajaya remained noticeably lower than surrounding states."]
+      }
+    ]
+    },
+    "mark": {
+      "type": "text",
+      "align": "center",
+      "baseline": "middle",
+      "fontSize": 12.5,
+      "fontWeight":"bold",
+      "dy":-120,
+      "lineHeight": 16
+    },
+    "encoding": {
+      "text": {"field": "text"}
     }
+  }
   ]
 
 }
