@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title":"Ranking of Malaysian States by Death Rate (Top 10)",
+  "height":450,
+  "width":"container",
+  "data": {
+    "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_state_clean.csv"
+  },
+  "config": {
+      "view": {
+          "strokeWidth": 0
+      }
+  },
+  "transform": [
+
+    { "filter": "datum.year >= 2010 && datum.year <= 2023" },
+
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "rate", "order": "descending"}, {"field": "state", "order": "ascending"}],
+      "groupby": ["year"]
+    },
+    {"filter": "datum.rank <= 10"}
+  ],
+  "layer":[
+    {
+      "mark": {"type": "line", "point": {"size": 100, "filled": true}, "orient": "vertical",
+        "interpolate": "monotone",
+        "strokeWidth": 3},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": { "labelAngle": 0 }},
+        "y": {"field": "rank", "type": "ordinal", "title": "Rank", "axis": { "grid": true }},
+        "order": {"field": "year", "type": "ordinal"},
+        "color":{
+          "field": "state", "type": "nominal", "scale": {"range": ["#CC79A7","#a6cee3","#1f78b4","#b2df8a","#33a02c", "#fb9a99","#fdbf6f","#ff7f00", "#cab2d6","#6a3d9a","#F0E442","#b15928"]
+          }
+        },
+        "tooltip": [
+          { "field": "state", "title": "State" },
+          { "field": "year", "title": "Year" },
+          { "field": "rank", "title": "Rank" },
+          { "field": "rate", "title": "Death rate (per 1,000 population)"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 40, "baseline": "middle", "fontSize": 12.5, "fontWeight":"bold"},
+      "transform": [{"filter": "datum.year == 2023"}],
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "rank", "type": "ordinal"},
+        "text": {"field": "state"},
+        "color": {
+          "field": "state",
+          "legend":null
+        }
+      }
+    }
+  ]
+}
