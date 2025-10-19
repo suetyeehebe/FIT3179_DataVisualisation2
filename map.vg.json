@@ -1,76 +1,90 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text":"Death Rate Across Malaysian States", "font": "EB Garamond", "fontWeight":"bold", "fontSize":20},
+  "title": {
+    "text": "Death Rate Across Malaysian States",
+    "font": "EB Garamond",
+    "fontWeight": "bold",
+    "fontSize": 20
+  },
   "width": "container",
   "height": 400,
-  "background":"transparent",
-  "projection": {"type": "mercator"},
+  "background": "transparent",
+  "projection": { "type": "mercator" },
   "layer": [
-    {"data": {
-      "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/ne_1.json",
-      "format": { "type": "topojson", "feature": "ne_10m_admin_1_states_provinces" }
-    },
-      "transform": [
-    {"filter": "datum.properties.admin === 'Malaysia'"},
     {
-      "lookup": "properties.name",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_state_clean.csv"
+      "data": {
+        "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/ne_1.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "transform": [
+        { "filter": "datum.properties.admin === 'Malaysia'" },
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_state_clean.csv"
+            },
+            "key": "state",
+            "fields": ["rate"]
+          }
         },
-        "key": "state",
-        "fields": ["rate"]
-      }
-    },
-    {"calculate": "datum.rate", "as": "Deaths per 1,000 population"}
-  ],
-  "mark": {"type": "geoshape", "stroke":"white"},
-  "encoding": {
-    "color": {
-      "field": "Deaths per 1,000 population",
-      "type": "quantitative",
-      "scale": {
+        { "calculate": "datum.rate", "as": "Deaths per 1,000 population" }
+      ],
+      "mark": { "type": "geoshape", "stroke": "white" },
+      "encoding": {
+        "color": {
+          "field": "Deaths per 1,000 population",
+          "type": "quantitative",
+          "scale": {
             "type": "threshold",
             "domain": [3, 5, 6, 7],
-            "range": ["#fef0d9","#fdcc8a","#fc8d59","#e34a33","#b30000"]
+            "range": ["#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"]
           }
-    },
-    "tooltip": [
-      {"field": "properties.name", "type": "nominal", "title": "State"},
-      {"field": "Deaths per 1,000 population", "type": "quantitative", "title": "Death Rate"}
-    ]
-  }
-  },
-  {
-    "data": {
-    "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/ne_1.json",
-    "format": {"type": "topojson", "feature": "ne_110m_graticules_5"}
-    },
-    "mark": { "type": "geoshape", "fill": null, "stroke": "lightgray"}
-  },
-  {
-    "data": {
-    "values": [
-      {
-        "text": [
-"Higher death rates in the Northern Peninsular states", "and parts of East Malaysia,",
-"while Putrajaya showed a noticeably lower rate than surrounding states."]
+        },
+        "tooltip": [
+          { "field": "properties.name", "type": "nominal", "title": "State" },
+          {
+            "field": "Deaths per 1,000 population",
+            "type": "quantitative",
+            "title": "Death Rate"
+          }
+        ]
       }
-    ]
     },
-    "mark": {
-      "type": "text",
-      "align": "center",
-      "baseline": "middle",
-      "fontSize": 12.5,
-      "fontWeight":"bold",
-      "dy":-120,
-      "lineHeight": 16
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/ne_1.json",
+        "format": { "type": "topojson", "feature": "ne_110m_graticules_5" }
+      },
+      "mark": { "type": "geoshape", "fill": null, "stroke": "lightgray" }
     },
-    "encoding": {
-      "text": {"field": "text"}
+    {
+      "data": {
+        "values": [
+          {
+            "text": [
+              "Higher death rates in the Northern Peninsular states",
+              "and parts of East Malaysia,",
+              "while Putrajaya showed a noticeably lower rate than surrounding states."
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 12.5,
+        "fontWeight": "bold",
+        "dy": -120,
+        "lineHeight": 16
+      },
+      "encoding": {
+        "text": { "field": "text" }
+      }
     }
-  }
   ]
-
 }

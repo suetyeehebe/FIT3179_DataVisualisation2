@@ -2,19 +2,38 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "width": "container",
   "height": 420,
-  "background":"transparent",
-  "title": {"text":"National Top 5 Causes of Death Over Time", "font": "EB Garamond", "fontWeight":"bold", "fontSize":20},
-  "data": {"url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/cleaned_leading_causes.csv"},
+  "background": "transparent",
+  "title": {
+    "text": "National Top 5 Causes of Death Over Time",
+    "font": "EB Garamond",
+    "fontWeight": "bold",
+    "fontSize": 20
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/cleaned_leading_causes.csv"
+  },
   "params": [
     {
       "name": "YearStart",
       "value": 2000,
-      "bind": {"input": "range", "min": 2000, "max": 2019, "step": 1, "name": "Start Year: "}
+      "bind": {
+        "input": "range",
+        "min": 2000,
+        "max": 2019,
+        "step": 1,
+        "name": "Start Year: "
+      }
     },
     {
       "name": "YearEnd",
       "value": 2020,
-      "bind": {"input": "range", "min": 2001, "max": 2020, "step": 1, "name": "End Year: "}
+      "bind": {
+        "input": "range",
+        "min": 2001,
+        "max": 2020,
+        "step": 1,
+        "name": "End Year: "
+      }
     }
   ],
   "transform": [
@@ -24,13 +43,13 @@
   "mark": "area",
   "encoding": {
     "x": {
-      "timeUnit": "year", 
+      "timeUnit": "year",
       "type": "temporal",
       "field": "Year",
       "title": "Year",
       "axis": {
-      "tickCount": { "interval": "year", "step": 1 }
-  }
+        "tickCount": { "interval": "year", "step": 1 }
+      }
     },
     "y": {
       "field": "Death rate per 100 000 population",
@@ -40,15 +59,25 @@
     },
     "color": {
       "field": "Indicator Name",
-      "scale": {"scheme": "set2"},
+      "scale": { "scheme": "set2" },
       "type": "nominal",
-       "title": "Causes of Death"
+      "title": "Causes of Death"
     },
 
     "tooltip": [
-      {"field": "Year", "type": "temporal", "timeUnit": "year", "title": "Year"},
-      {"field": "Indicator Name", "type": "nominal", "title": "Cause"},
-      {"field": "Death rate per 100 000 population", "type": "quantitative", "title": "Death Rate", "format": ".1f"}
+      {
+        "field": "Year",
+        "type": "temporal",
+        "timeUnit": "year",
+        "title": "Year"
+      },
+      { "field": "Indicator Name", "type": "nominal", "title": "Cause" },
+      {
+        "field": "Death rate per 100 000 population",
+        "type": "quantitative",
+        "title": "Death Rate",
+        "format": ".1f"
+      }
     ]
   }
 }

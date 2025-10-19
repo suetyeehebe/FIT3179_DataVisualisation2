@@ -1,24 +1,33 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "title": {"text":"Male vs Female Death Rates by State", "font": "EB Garamond", "fontWeight":"bold", "fontSize":20},
+  "title": {
+    "text": "Male vs Female Death Rates by State",
+    "font": "EB Garamond",
+    "fontWeight": "bold",
+    "fontSize": 20
+  },
   "width": "container",
-  "height": 420, 
-  "background":"transparent",
-  "data": { "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_sex_ethnic_state_normalised.csv"},
+  "height": 420,
+  "background": "transparent",
+  "data": {
+    "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_sex_ethnic_state_normalised.csv"
+  },
   "params": [
-  {
-  "name": "Year",
-  "value": 2020,
-  "bind": {
+    {
+      "name": "Year",
+      "value": 2020,
+      "bind": {
         "input": "select",
-        "options": [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],
+        "options": [
+          2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
+        ],
         "name": "Year: "
       }
-  }
+    }
   ],
 
   "transform": [
-    {"filter": "datum.year == Year"},
+    { "filter": "datum.year == Year" },
     {
       "calculate": "datum.sex == 'male' ? 'Male' : 'Female'",
       "as": "sex_std"
@@ -28,7 +37,7 @@
       "as": "signed_deaths"
     }
   ],
-  "layer":[
+  "layer": [
     {
       "mark": "bar",
       "encoding": {
@@ -51,23 +60,27 @@
         "color": {
           "field": "sex_std",
           "type": "nominal",
-          "scale": {"range": 
-          ["#FF9DA6", "#4C78A8"]},
-          "legend": {"orient": "top", "title": null}
+          "scale": { "range": ["#FF9DA6", "#4C78A8"] },
+          "legend": { "orient": "top", "title": null }
         },
-          "tooltip": [
-            {"field": "state", "type": "nominal", "title": "State"},
-            {"field": "sex_std", "type": "nominal", "title": "Sex"},
-            {"field": "deaths_per_100k", "type": "quantitative", "title": "Death Rate", "format": ".1f"},
-            { "field": "year", "type": "ordinal", "title": "Year" }
-          ]
+        "tooltip": [
+          { "field": "state", "type": "nominal", "title": "State" },
+          { "field": "sex_std", "type": "nominal", "title": "Sex" },
+          {
+            "field": "deaths_per_100k",
+            "type": "quantitative",
+            "title": "Death Rate",
+            "format": ".1f"
+          },
+          { "field": "year", "type": "ordinal", "title": "Year" }
+        ]
       }
     },
     {
-      "mark":{
+      "mark": {
         "type": "text",
-        "align": {"expr": "datum.signed_deaths < 0 ? 'right' : 'left'"},
-        "dx": {"expr": "datum.signed_deaths < 0 ? -2 : 2"}
+        "align": { "expr": "datum.signed_deaths < 0 ? 'right' : 'left'" },
+        "dx": { "expr": "datum.signed_deaths < 0 ? -2 : 2" }
       },
 
       "encoding": {
@@ -81,12 +94,16 @@
           "title": "State",
           "sort": "descending"
         },
-        "text":{"field": "deaths_per_100k", "type": "quantitative", "format": ".1f"}
+        "text": {
+          "field": "deaths_per_100k",
+          "type": "quantitative",
+          "format": ".1f"
+        }
       }
     }
   ],
-  
+
   "config": {
-    "view": {"stroke": null}
+    "view": { "stroke": null }
   }
 }

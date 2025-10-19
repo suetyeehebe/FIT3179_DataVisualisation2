@@ -1,19 +1,26 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text":"Death Rate vs Median Household Income (2022)", "font": "EB Garamond", "fontWeight":"bold", "fontSize":20},
+  "title": {
+    "text": "Death Rate vs Median Household Income (2022)",
+    "font": "EB Garamond",
+    "fontWeight": "bold",
+    "fontSize": 20
+  },
   "width": "container",
   "height": 400,
-  "background":"transparent",
+  "background": "transparent",
   "data": {
     "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_state_clean.csv"
   },
 
-  "transform":[
+  "transform": [
     { "filter": "datum.year == 2022" },
     {
       "lookup": "state",
       "from": {
-        "data": { "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/hh_income_state_filtered.csv" },
+        "data": {
+          "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/hh_income_state_filtered.csv"
+        },
         "key": "state",
         "fields": ["income_median", "year"]
       }
@@ -25,7 +32,9 @@
     {
       "lookup": "state",
       "from": {
-        "data": { "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/healthcare_staff_normalised.csv" },
+        "data": {
+          "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/healthcare_staff_normalised.csv"
+        },
         "key": "state",
         "fields": ["staff_per_10k", "year"]
       }
@@ -39,27 +48,62 @@
       "from": {
         "data": {
           "values": [
-            {"state": "Kelantan",       "region": "East Coast (Peninsular Malaysia)"},
-            {"state": "Terengganu",     "region": "East Coast (Peninsular Malaysia)"},
-            {"state": "Pahang",         "region": "East Coast (Peninsular Malaysia)"},
+            {
+              "state": "Kelantan",
+              "region": "East Coast (Peninsular Malaysia)"
+            },
+            {
+              "state": "Terengganu",
+              "region": "East Coast (Peninsular Malaysia)"
+            },
+            { "state": "Pahang", "region": "East Coast (Peninsular Malaysia)" },
 
-            {"state": "Perlis",         "region": "Northern Region (West Coast, Peninsular Malaysia)"},
-            {"state": "Kedah",          "region": "Northern Region (West Coast, Peninsular Malaysia)"},
-            {"state": "Pulau Pinang",   "region": "Northern Region (West Coast, Peninsular Malaysia)"},
-            {"state": "Perak",          "region": "Northern Region (West Coast, Peninsular Malaysia)"},
+            {
+              "state": "Perlis",
+              "region": "Northern Region (West Coast, Peninsular Malaysia)"
+            },
+            {
+              "state": "Kedah",
+              "region": "Northern Region (West Coast, Peninsular Malaysia)"
+            },
+            {
+              "state": "Pulau Pinang",
+              "region": "Northern Region (West Coast, Peninsular Malaysia)"
+            },
+            {
+              "state": "Perak",
+              "region": "Northern Region (West Coast, Peninsular Malaysia)"
+            },
 
-            {"state": "Selangor",       "region": "Central Region (West Coast, Peninsular Malaysia)"},
-            {"state": "Kuala Lumpur",   "region": "Central Region (West Coast, Peninsular Malaysia)"},
-            {"state": "Putrajaya",      "region": "Central Region (West Coast, Peninsular Malaysia)"},
+            {
+              "state": "Selangor",
+              "region": "Central Region (West Coast, Peninsular Malaysia)"
+            },
+            {
+              "state": "Kuala Lumpur",
+              "region": "Central Region (West Coast, Peninsular Malaysia)"
+            },
+            {
+              "state": "Putrajaya",
+              "region": "Central Region (West Coast, Peninsular Malaysia)"
+            },
 
-            {"state": "Negeri Sembilan","region": "Southern Region (West Coast, Peninsular Malaysia)"},
-            {"state": "Melaka",         "region": "Southern Region (West Coast, Peninsular Malaysia)"},
-            {"state": "Johor",          "region": "Southern Region (West Coast, Peninsular Malaysia)"},
+            {
+              "state": "Negeri Sembilan",
+              "region": "Southern Region (West Coast, Peninsular Malaysia)"
+            },
+            {
+              "state": "Melaka",
+              "region": "Southern Region (West Coast, Peninsular Malaysia)"
+            },
+            {
+              "state": "Johor",
+              "region": "Southern Region (West Coast, Peninsular Malaysia)"
+            },
 
-        
-            {"state": "Sabah",          "region": "East Malaysia"},
-            {"state": "Sarawak",        "region": "East Malaysia"},
-            {"state": "Labuan",         "region": "East Malaysia"}
+            { "state": "Sabah", "region": "East Malaysia" },
+            { "state": "Sarawak", "region": "East Malaysia" },
+            { "state": "Labuan", "region": "East Malaysia" }
           ]
         },
         "key": "state",
@@ -69,36 +113,41 @@
     { "calculate": "datum.rate * 10", "as": "rate_per_10k" }
   ],
 
-  "layer":[
+  "layer": [
     {
       "mark": {
-      "type": "circle",
-      "opacity": 0.8,
-      "stroke": "darkgray",
-      "strokeWidth": 1
-    },
+        "type": "circle",
+        "opacity": 0.8,
+        "stroke": "darkgray",
+        "strokeWidth": 1
+      },
       "encoding": {
         "x": {
           "field": "median_income_2022",
           "type": "quantitative",
           "scale": {
-            "domain": [ 0, 12000 ]
+            "domain": [0, 12000]
           },
-          "title":"Median Household Income (RM)",
+          "title": "Median Household Income (RM)",
           "axis": { "tickCount": 6 }
         },
         "y": {
           "field": "rate_per_10k",
           "type": "quantitative",
           "scale": {
-            "domain": [ 0, 100 ]
+            "domain": [0, 100]
           },
           "title": "Death Rate (per 10,000 population)",
           "axis": { "tickCount": 6 }
         },
-        "size": {"field": "staff_per_10k", "type": "quantitative",  "scale": {"type": "threshold",
-          "domain": [35,55,75,95],
-          "range": [80, 220, 500, 900, 1600]},
+        "size": {
+          "field": "staff_per_10k",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [35, 55, 75, 95],
+            "range": [80, 220, 500, 900, 1600]
+          },
           "title": "Healthcare Staff per 10,000 population",
           "legend": { "titleLimit": 0 }
         },
@@ -115,18 +164,32 @@
               "Southern Region (West Coast, Peninsular Malaysia)",
               "East Malaysia"
             ],
-            "scheme":"accent"
+            "scheme": "accent"
           },
-          "legend": {"orient": "right", "labelLimit": 0}
+          "legend": { "orient": "right", "labelLimit": 0 }
         },
 
         "tooltip": [
-              {"field": "state", "type": "nominal", "title": "State"},
-              {"field": "rate_per_10k", "type": "quantitative", "title": "Death Rate", "format": ".1f"},
-              {"field": "median_income_2022", "type": "quantitative", "title": "Income (RM)", "format": ",.0f"},
-              {"field": "staff_per_10k_2022", "type": "quantitative", "title": "Healthcare Staff Rate", "format": ".1f"}
+          { "field": "state", "type": "nominal", "title": "State" },
+          {
+            "field": "rate_per_10k",
+            "type": "quantitative",
+            "title": "Death Rate",
+            "format": ".1f"
+          },
+          {
+            "field": "median_income_2022",
+            "type": "quantitative",
+            "title": "Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "staff_per_10k_2022",
+            "type": "quantitative",
+            "title": "Healthcare Staff Rate",
+            "format": ".1f"
+          }
         ]
-
       }
     },
     {
@@ -138,8 +201,8 @@
         "dx": -18
       },
       "encoding": {
-        "x": {"field": "median_income_2022", "type": "quantitative"},
-        "y": {"field": "rate_per_10k", "type": "quantitative"},
+        "x": { "field": "median_income_2022", "type": "quantitative" },
+        "y": { "field": "rate_per_10k", "type": "quantitative" },
         "text": { "field": "state", "type": "nominal" },
         "color": { "value": "black" },
         "opacity": {
@@ -152,5 +215,4 @@
       }
     }
   ]
-
 }
