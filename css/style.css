@@ -76,6 +76,46 @@ p{
     color: #ffd92f;
 }
 
+/* "#BBBBBB", "#4269d0", "#BBBBBB", "#BBBBBB",
+    "#efb118", "#BBBBBB", "#ff725c", "#BBBBBB",
+    "#6cc5b0", "#ff8ab7", "#a463f2", "#3ca951",
+    "#BBBBBB", "#9c6b4e","#BBBBBB", "#97bbf5" */
+.perak_text{
+    color: #6cc5b0;
+}
+
+.kedah_text{
+    color: #4269d0;
+}
+
+.perlis_text{
+    color: #ff8ab7;
+}
+
+.penang_text{
+    color: #a463f2;
+}
+
+.ns_text{
+    color: #ff725c;
+}
+
+.sarawak_text{
+    color: #9c6b4e;
+}
+
+.tereng_text{
+    color: #97bbf5;
+}
+
+.labuan_text{
+    color: #efb118;
+}
+
+.pj_text{
+    color: #3ca951;
+}
+
 /* KPI tiles */
 .kpis {margin-top: 10px; margin-bottom: 24px;}
 .kpis .pure-u-1-3 {padding-left:0; padding-right:0;}
