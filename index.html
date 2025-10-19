@@ -32,8 +32,8 @@
     </div>
     <!-- end pure grid group -->
 
-
-    <!-- pure grid group -->
+    <section class="card">
+        <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
 
@@ -71,109 +71,118 @@
       </div>
     </div>
     <!-- end pure grid group -->
+    </section>
 
-    <!-- pure grid group -->
-    <div class="pure-g">
-        <div class="pure-u-1-1">
-            <h2>How are income and death rates linked?</h2> 
+
+    <section class="card">
+            <!-- pure grid group -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <h2>How are income and death rates linked?</h2> 
+            </div>
+
+            <div class="pure-u-1-4">
+                <p class="pad-right side-caption">
+                    Most states form a <span class="bold">gentle downward slope</span>: <span class="bold">higher median income</span> tends to pair with <span class="bold">lower death rates</span>. 
+                    <span class="bold">Larger bubbles</span> at similar income levels often coincide with <span class="bold">lower death rates</span>, suggesting that better healthcare staffing may help mitigate risk even where incomes are comparable.
+                </p>
+                <p class="pad-right side-caption">
+                    <span class="bold">Putrajaya</span> stands out with high income and one of the lowest death rates, its large bubble reflecting dense healthcare capacity. 
+                    Meanwhile, <span class="bold">Kuala Lumpur</span> and <span class="bold">Selangor</span> sit mid-low on mortality despite high income, reinforcing the idea that access to healthcare resources plays a critical role in reducing mortality beyond economic factors alone.
+                </p>
+            </div>
+
+            <div class="pure-u-3-4">
+                <div id="visBubble" class="vis-container"></div>
+            </div>
+
         </div>
+        <!-- end pure grid group -->
+    </section>
 
-        <div class="pure-u-1-4">
-            <p class="pad-right side-caption">
-                Most states form a <span class="bold">gentle downward slope</span>: <span class="bold">higher median income</span> tends to pair with <span class="bold">lower death rates</span>. 
-                <span class="bold">Larger bubbles</span> at similar income levels often coincide with <span class="bold">lower death rates</span>, suggesting that better healthcare staffing may help mitigate risk even where incomes are comparable.
-            </p>
-            <p class="pad-right side-caption">
-                <span class="bold">Putrajaya</span> stands out with high income and one of the lowest death rates, its large bubble reflecting dense healthcare capacity. 
-                Meanwhile, <span class="bold">Kuala Lumpur</span> and <span class="bold">Selangor</span> sit mid-low on mortality despite high income, reinforcing the idea that access to healthcare resources plays a critical role in reducing mortality beyond economic factors alone.
-            </p>
+    <section class="card">
+        <!-- pure grid group -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <h2>How have death rate ranks changed?</h2> 
+            </div>
+
+            <div class="pure-u-3-4">
+                <div id="visBump" class="vis-container"></div>
+            </div>
+
+            <div class="pure-u-1-4">
+                <p class=" pad-left side-caption">
+                    <span class="bold perak_text">Perak</span>, <span class="bold kedah_text">Kedah</span>, and <span class="bold perlis_text">Perlis</span> dominate the <span class="bold">top ranks</span> almost every year, reflecting ageing populations and persistent health inequities in the north. In contrast, <span class="bold pj_text">Putrajaya</span> and <span class="bold labuan_text">Labuan</span> remain <span class="bold">anchored at the bottom</span> throughout the years, reflecting economic advantage and younger populations. 
+                </p>
+                <p class=" pad-left side-caption">
+                    After <span class="bold">2020</span>, <span class="bold sarawak_text">Sarawak</span> shows a <span class="bold">noticeable upward shift</span>, possibly linked to the pandemic's lingering effects or under-resourced rural health systems. <span class="bold ns_text">Negeri Sembilan</span> and <span class="bold tereng_text">Terengganu</span> also show mild fluctuations but largely stable positions, suggesting localised demographic or healthcare changes.
+                </p>
+            </div>
+
         </div>
+        <!-- end pure grid group -->
+    </section>
 
-        <div class="pure-u-3-4">
-            <div id="visBubble" class="vis-container"></div>
+
+    <section class="card">
+        <!-- pure grid group -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <h2>What are Malaysians dying from?</h2> 
+            </div>
+
+            <div class="pure-u-1-4">
+                <p class="pad-right">
+                    From 2000 to 2020, Malaysia's causes of death shifted dramatically toward <span class="bold">non-communicable diseases</span>. 
+                    <span class="bold heart_text">Ischaemic heart disease</span> and <span class="bold cereb_text">cerebrovascular disease</span> expanded sharply to dominate the mortality 
+                    profile, while <span class="bold resp_text">lower respiratory infections</span> and <span class="bold accident_text">road traffic accidents</span> contributed smaller, steadier shares. 
+                    This epidemiological transition signifies Malaysia's entry into a <span class="bold">chronic-disease era</span>, where lifestyle, diet, and ageing have become primary mortality drivers.
+                </p>
+            </div>
+
+            <div class="pure-u-3-4">
+                <div id="visCausesOverTime" class="vis-container"></div>
+            </div>
         </div>
+        <!-- end pure grid group -->
+    </section>
 
-    </div>
-    <!-- end pure grid group -->
+    <section class="card">
+        <!-- pure grid group -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <h2>Demographic Disparities</h2> 
+            </div>
 
-    <!-- pure grid group -->
-    <div class="pure-g">
-        <div class="pure-u-1-1">
-            <h2>How have death rate ranks changed?</h2> 
+            <div class="pure-u-3-4"> 
+                <div id="visDiverging" class="vis-container"></div>
+            </div>
+
+            <div id = "l-align" class="pure-u-1-4 vcenter-col">
+                <p class="pad-left">
+                    Across <span class="bold">every state</span>, <span class="bold male_text">male</span> death rates exceed <span class="bold female_text">female</span> death rates, and the gap is substantial in several places.
+                    Even in <span class="bold">developed areas</span> such as Kuala Lumpur and Selangor, the <span class="bold">gap persists</span>.
+                    These consistent disparities suggest deeper behavioural and occupational risk differences, reinforcing the need for gender-targeted health interventions and awareness campaigns.
+                </p>
+            </div>
+
         </div>
-
-        <div class="pure-u-3-4">
-            <div id="visBump" class="vis-container"></div>
+        
+        <div class="pure-g demographics">
+            <div class="pure-u-3-4">
+                <div id="visAgeCause" class="vis-container"></div>
+            </div>
+            <div class="pure-u-1-4 vcenter-col">
+                <p class="pad-left">
+                    Cause composition changes sharply with age. <span class="bold">Early childhood</span> deaths are dominated by <span class="bold">perinatal and congenital conditions</span>,
+                    <span class="bold">adolescence and early adulthood</span> are driven by <span class="bold traffic_text">road traffic accidents</span>, and the picture transitions toward <span class="bold">chronic diseases</span> from <span class="bold">mid-life onward</span>. 
+                    By ages <span class="bold">55-74</span> and <span class="bold">75+</span>, <span class="bold ihd_text">ischaemic heart diseases</span> and <span class="bold lr_text">lower respiratory infections</span> account for the largest shares, with <span class="bold cop_text">chronic obstructive pulmonary disease</span> increasingly visible in the oldest group.
+                </p>
+            </div>
         </div>
-
-        <div class="pure-u-1-4">
-            <p class=" pad-left side-caption">
-                <span class="bold perak_text">Perak</span>, <span class="bold kedah_text">Kedah</span>, and <span class="bold perlis_text">Perlis</span> dominate the <span class="bold">top ranks</span> almost every year, reflecting ageing populations and persistent health inequities in the north. In contrast, <span class="bold pj_text">Putrajaya</span> and <span class="bold labuan_text">Labuan</span> remain <span class="bold">anchored at the bottom</span> throughout the years, reflecting economic advantage and younger populations. 
-            </p>
-             <p class=" pad-left side-caption">
-                After <span class="bold">2020</span>, <span class="bold sarawak_text">Sarawak</span> shows a <span class="bold">noticeable upward shift</span>, possibly linked to the pandemic's lingering effects or under-resourced rural health systems. <span class="bold ns_text">Negeri Sembilan</span> and <span class="bold tereng_text">Terengganu</span> also show mild fluctuations but largely stable positions, suggesting localised demographic or healthcare changes.
-             </p>
-        </div>
-
-    </div>
-    <!-- end pure grid group -->
-
-    <!-- pure grid group -->
-    <div class="pure-g">
-        <div class="pure-u-1-1">
-            <h2>What are Malaysians dying from?</h2> 
-        </div>
-
-        <div class="pure-u-1-4">
-            <p class="pad-right">
-                From 2000 to 2020, Malaysia's causes of death shifted decisively toward chronic non-communicable diseases. 
-                <span class="bold heart_text">Ischaemic heart disease</span> and <span class="bold cereb_text">cerebrovascular disease</span> expanded sharply to dominate the mortality 
-                profile, while <span class="bold resp_text">lower respiratory infections</span> and <span class="bold accident_text">road traffic accidents</span> contributed smaller, steadier shares. 
-                <span class="bold diabetes_text">Diabetes mellitus</span> appeared briefly in the early 2000s before disappearing, suggesting limited or reclassified reporting.
-            </p>
-        </div>
-
-        <div class="pure-u-3-4">
-            <div id="visCausesOverTime" class="vis-container"></div>
-        </div>
-    </div>
-    <!-- end pure grid group -->
-
-    <!-- pure grid group -->
-    <div class="pure-g demographics">
-        <div class="pure-u-1-1">
-            <h2>Demographic Disparities</h2> 
-        </div>
-
-        <div class="pure-u-3-4"> 
-            <div id="visDiverging" class="vis-container"></div>
-        </div>
-
-        <div id = "l-align" class="pure-u-1-4">
-            <h3 class="pad-left">Gaps that matter</h3>
-            <p class="pad-left">
-                Across every state, male death rates exceed female death rates, and the gap is substantial in several places.
-                The consistent left-lean of the bars confirms a systemic sex disparity rather than isolated anomalies. The
-                magnitude of the gap varies by state, suggesting local factors, such as occupational risks, behaviour, or access,
-                may amplify or dampen the difference.
-            </p>
-        </div>
-
-    </div>
-    
-    <div class="pure-g demographics">
-        <div class="pure-u-3-4">
-            <div id="visAgeCause" class="vis-container"></div>
-        </div>
-        <div class="pure-u-1-4">
-            <p class="pad-left">
-                Cause composition changes sharply with age. Early childhood is dominated by perinatal and congenital conditions,
-                adolescence and early adulthood show a prominent road-traffic component, and the picture transitions toward chronic
-                cardiopulmonary diseases from mid-life onward. By ages 55-74 and 75+, ischaemic heart diseases and lower respiratory infections account for the largest shares, with chronic obstructive pulmonary disease increasingly visible in the oldest group.
-            </p>
-        </div>
-    </div>
-    <!-- end pure grid group -->
+        <!-- end pure grid group -->
+    </section>
 
     <div class="pure-g">
       <div class="pure-u-1-1 small-font">

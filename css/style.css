@@ -8,12 +8,16 @@ body {
 
 h1{
     font-family: 'EB Garamond';
-    font-size: 36px;
+    font-size: 37px;
+    color: #5f0000;
+    font-weight: bold;
 }
 
 h2{
     font-family: 'EB Garamond';
-    font-size: 26px;
+    font-size: 27px;
+    color: #5f0000;
+    font-weight: bold;
 }
 
 p{
@@ -37,7 +41,34 @@ p{
 }
 
 .pure-g {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+.card {
+  position: relative;
+  background: #f9fafb;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+  max-width: 1250px;
+  border: 1px solid rgba(108, 103, 163, 0.08);
+  transition: all 0.3s ease;
+  height: auto;
+  padding:16px 18px;
+  min-height: fit-content;
+  margin-bottom:40px;
+}
+
+.card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(138, 110, 110, 0.7);
+  border-color: #d7dde4;
+}
+
+.vcenter-col{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical center */
+  
 }
 
 .small-font {
@@ -50,6 +81,30 @@ p{
 
 .pad-left{
     padding-left: 20px;
+}
+
+.traffic_text{
+    color: #d67195;
+}
+
+.cop_text{
+    color: #88d27a;
+}
+
+.lr_text{
+    color: #79706e;
+}
+
+.ihd_text{
+    color: #83bcb6;
+}
+
+.male_text{
+    color: #4C78A8;
+}
+
+.female_text{
+    color: #FF9DA6;
 }
 
 .cereb_text{
@@ -76,10 +131,6 @@ p{
     color: #ffd92f;
 }
 
-/* "#BBBBBB", "#4269d0", "#BBBBBB", "#BBBBBB",
-    "#efb118", "#BBBBBB", "#ff725c", "#BBBBBB",
-    "#6cc5b0", "#ff8ab7", "#a463f2", "#3ca951",
-    "#BBBBBB", "#9c6b4e","#BBBBBB", "#97bbf5" */
 .perak_text{
     color: #6cc5b0;
 }
@@ -120,7 +171,7 @@ p{
 .kpis {margin-top: 10px; margin-bottom: 24px;}
 .kpis .pure-u-1-3 {padding-left:0; padding-right:0;}
 .kpi-tile{
-  background: #ffffff;
+  background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   padding: 14px 16px;
@@ -142,10 +193,10 @@ p{
 .kpi-footnote{
   margin-top: 6px;
   font-size: 12px;
-  color: #7e838d;
+  color: #7e838dd7;
 }
 
-.demographics .pure-u-1-1 { margin-bottom: 20px;}
+.demographics { margin-top: 40px;}
 /* Text Alignment in HTML */
 
 #l-align {
@@ -158,9 +209,4 @@ p{
 
 #r-align {
     text-align: right;
-}
-
-/* add space when one .vis-container follows another */
-.vis-container + .vis-container {
-  margin-top: 24px;   /* tweak to your liking */
 }
