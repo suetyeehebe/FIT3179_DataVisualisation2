@@ -6,11 +6,8 @@
   "data": {
     "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/leading_causes_by_age.csv"
   },
-  "params": [
-  { "name": "Year", "value": 2020 }   
-  ],
   "transform": [
-    { "filter": "datum.Year == Year" }, 
+    { "filter": "datum.Year == 2020" }, 
     {
       "calculate": "test(/jan$/i, datum['Age Group']) ? '1-4' : (test(/may$/i,datum['Age Group']) ? '5-14' : datum['Age Group'])",
       "as": "Age Group"
@@ -27,7 +24,7 @@
       "aggregate": "sum",
       "field": "Percentage of cause-specific deaths out of total deaths",
       "type": "quantitative",
-      "title": "Percentage of cause-specific deaths (%)"
+      "title": "Percentage of Cause-specific Deaths (%)"
     }
   },
   "layer": [
@@ -55,7 +52,7 @@
         "tooltip": [
           { "field": "Age Group" },
           { "field": "Indicator Name", "title": "Cause" },
-          { "aggregate": "sum", "field": "Percentage of cause-specific deaths out of total deaths", "title": "Percentage of cause-specific deaths","format": ".2f" }
+          { "aggregate": "sum", "field": "Percentage of cause-specific deaths out of total deaths", "title": "Share of Deaths by Cause (%)","format": ".2f" }
         ]
       }
     },
@@ -65,7 +62,7 @@
         "align": "left",
         "baseline": "middle",
         "dx": -14,
-        "dy": -5,
+        "dy": -8,
         "fontSize":12
       },
       "encoding": {

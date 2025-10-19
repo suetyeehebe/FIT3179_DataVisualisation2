@@ -33,7 +33,7 @@
     "y": {
       "field": "Death rate per 100 000 population",
       "type": "quantitative",
-      "title": "Death rate (per 100,000 population)",
+      "title": "Death Rate (per 100,000 population)",
       "stack": "zero"
     },
     "color": {
@@ -46,7 +46,7 @@
     "tooltip": [
       {"field": "Year", "type": "temporal", "timeUnit": "year", "title": "Year"},
       {"field": "Indicator Name", "type": "nominal", "title": "Cause"},
-      {"field": "Death rate per 100 000 population", "type": "quantitative", "title": "Death rate (per 100,000 population)", "format": ".1f"}
+      {"field": "Death rate per 100 000 population", "type": "quantitative", "title": "Death Rate", "format": ".1f"}
     ]
   }
 }

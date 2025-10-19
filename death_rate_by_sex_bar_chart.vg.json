@@ -2,13 +2,17 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "title": "Male vs Female Death Rates by State",
   "width": "container",
-  "height": 400, 
+  "height": 420, 
   "data": { "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_sex_ethnic_state_normalised.csv"},
   "params": [
   {
   "name": "Year",
   "value": 2020,
-  "bind": {"input": "range", "min": 2010, "max": 2020, "step": 1}
+  "bind": {
+        "input": "select",
+        "options": [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],
+        "name": "Year: "
+      }
   }
   ],
 
@@ -36,7 +40,7 @@
         "x": {
           "field": "signed_deaths",
           "type": "quantitative",
-          "title": "Death rate (per 100,000 population)",
+          "title": "Death Rate (per 100,000 population)",
           "scale": { "domain": [-1000, 1000] },
           "axis": {
             "labelExpr": "abs(datum.value)",
@@ -53,7 +57,7 @@
           "tooltip": [
             {"field": "state", "type": "nominal", "title": "State"},
             {"field": "sex_std", "type": "nominal", "title": "Sex"},
-            {"field": "deaths_per_100k", "type": "quantitative", "title": "Death rate (per 100,000 population)", "format": ".1f"},
+            {"field": "deaths_per_100k", "type": "quantitative", "title": "Death Rate", "format": ".1f"},
             { "field": "year", "type": "ordinal", "title": "Year" }
           ]
       }

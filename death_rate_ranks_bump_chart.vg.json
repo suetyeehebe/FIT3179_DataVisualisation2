@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "title":"Ranking of Malaysian States by Death Rate (Top 10)",
-  "height":450,
+  "title":"Ranking of Malaysian States by Death Rate",
+  "height":470,
   "width":"container",
   "data": {
     "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_state_clean.csv"
@@ -14,37 +14,44 @@
   "transform": [
 
     { "filter": "datum.year >= 2010 && datum.year <= 2023" },
-
+    { "filter": "toNumber(datum.year) % 2 == 1" },
     {
       "window": [{"op": "rank", "as": "rank"}],
       "sort": [{"field": "rate", "order": "descending"}, {"field": "state", "order": "ascending"}],
       "groupby": ["year"]
     },
-    {"filter": "datum.rank <= 10"}
+    {"filter": "datum.rank <= 16"},
+    {
+      "calculate": "datum.rank >= 8 && datum.rank <= 14 ? 'Grey' : datum.state",
+      "as": "color_group"
+    }
   ],
   "layer":[
     {
-      "mark": {"type": "line", "point": {"size": 100, "filled": true}, "orient": "vertical",
+      "mark": {"type": "line", "point": {"size": 250, "filled": true}, "orient": "vertical",
         "interpolate": "monotone",
         "strokeWidth": 3},
       "encoding": {
-        "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": { "labelAngle": 0 }},
-        "y": {"field": "rank", "type": "ordinal", "title": "Rank", "axis": { "grid": true }},
+        "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": { "labelAngle": 0 , "grid":true}},
+        "y": {"field": "rank", "type": "ordinal", "title": "Rank"},
         "order": {"field": "year", "type": "ordinal"},
         "color":{
-          "field": "state", "type": "nominal", "scale": {"range": ["#CC79A7","#a6cee3","#1f78b4","#b2df8a","#33a02c", "#fb9a99","#fdbf6f","#ff7f00", "#cab2d6","#6a3d9a","#F0E442","#b15928"]
+          "field": "state", "type": "nominal", "scale": {"range": ["#BBBBBB", "#4269d0", "#BBBBBB", "#BBBBBB",
+    "#efb118", "#BBBBBB", "#ff725c", "#BBBBBB",
+    "#6cc5b0", "#ff8ab7", "#a463f2", "#3ca951",
+    "#BBBBBB", "#9c6b4e","#BBBBBB", "#97bbf5"]
           }
         },
         "tooltip": [
           { "field": "state", "title": "State" },
           { "field": "year", "title": "Year" },
           { "field": "rank", "title": "Rank" },
-          { "field": "rate", "title": "Death rate (per 1,000 population)"}
+          { "field": "rate", "title": "Deaths per 1,000 population"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": 40, "baseline": "middle", "fontSize": 12.5, "fontWeight":"bold"},
+      "mark": {"type": "text", "align": "left", "dx": 10, "baseline": "middle", "fontSize": 12, "fontWeight":"bold"},
       "transform": [{"filter": "datum.year == 2023"}],
       "encoding": {
         "x": {"field": "year", "type": "ordinal"},
@@ -55,6 +62,38 @@
           "legend":null
         }
       }
-    }
+    },
+    {
+      "mark": {
+          "type": "text",
+          "align": "center",
+          "dy": 1,
+          "baseline": "middle",
+          "fontWeight": "bolder"
+      },
+      "transform": [{"filter": "datum.year == 2011"}],
+      "encoding": {
+          "x": {"field": "year", "type": "ordinal"},
+          "y": {"field": "rank", "type": "ordinal"},
+          "text": {"field": "rank"},
+          "color": {"value": "white"}
+        }
+      },
+      {
+      "mark": {
+          "type": "text",
+          "align": "center",
+          "dy": 1,
+          "baseline": "middle",
+          "fontWeight": "bolder"
+      },
+      "transform": [{"filter": "datum.year == 2023"}],
+      "encoding": {
+          "x": {"field": "year", "type": "ordinal"},
+          "y": {"field": "rank", "type": "ordinal"},
+          "text": {"field": "rank"},
+          "color": {"value": "white"}
+        }
+      }
   ]
 }
