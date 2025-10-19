@@ -1,8 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Death Rate vs Household Income (2022)",
+  "title": {"text":"Death Rate vs Median Household Income (2022)", "font": "EB Garamond", "fontWeight":"bold", "fontSize":20},
   "width": "container",
   "height": 400,
+  "background":"transparent",
   "data": {
     "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_state_clean.csv"
   },

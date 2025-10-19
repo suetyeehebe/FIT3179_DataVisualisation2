@@ -1,8 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "title":"Ranking of Malaysian States by Death Rate",
-  "height":470,
+  "title": {"text":"Ranking of Malaysian States by Death Rate", "font": "EB Garamond", "fontWeight":"bold", "fontSize":20},
+  "height":450,
   "width":"container",
+  "background":"transparent",
   "data": {
     "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_state_clean.csv"
   },

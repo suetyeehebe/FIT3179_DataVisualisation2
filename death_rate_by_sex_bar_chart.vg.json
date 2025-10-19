@@ -1,8 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "title": "Male vs Female Death Rates by State",
+  "title": {"text":"Male vs Female Death Rates by State", "font": "EB Garamond", "fontWeight":"bold", "fontSize":20},
   "width": "container",
   "height": 420, 
+  "background":"transparent",
   "data": { "url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/death_sex_ethnic_state_normalised.csv"},
   "params": [
   {

@@ -1,8 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Crude Death Rate by State",
+  "title": {"text":"Death Rate Across Malaysian States", "font": "EB Garamond", "fontWeight":"bold", "fontSize":20},
   "width": "container",
   "height": 400,
+  "background":"transparent",
   "projection": {"type": "mercator"},
   "layer": [
     {"data": {

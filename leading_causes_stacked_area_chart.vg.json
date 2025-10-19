@@ -2,6 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "width": "container",
   "height": 420,
+  "background":"transparent",
+  "title": {"text":"National Top 5 Causes of Death Over Time", "font": "EB Garamond", "fontWeight":"bold", "fontSize":20},
   "data": {"url": "https://raw.githubusercontent.com/suetyeehebe/FIT3179_DataVisualisation2/refs/heads/main/data/cleaned_leading_causes.csv"},
   "params": [
     {
