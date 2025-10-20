@@ -68,7 +68,7 @@
             "text": [
               "Higher death rates in the Northern Peninsular states",
               "and parts of East Malaysia,",
-              "while Putrajaya showed a noticeably lower rate than surrounding states."
+              "while Putrajaya showed a noticeably lower rate than others."
             ]
           }
         ]
@@ -77,10 +77,11 @@
         "type": "text",
         "align": "center",
         "baseline": "middle",
-        "fontSize": 12.5,
+        "fontSize": 13.5,
         "fontWeight": "bold",
         "dy": -120,
-        "lineHeight": 16
+        "lineHeight": 16,
+        "color": "#333333"
       },
       "encoding": {
         "text": { "field": "text" }

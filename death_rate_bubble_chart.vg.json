@@ -198,6 +198,7 @@
         "align": "right",
         "baseline": "middle",
         "fontWeight": "bolder",
+        "color": "#333333",
         "dx": -18
       },
       "encoding": {
